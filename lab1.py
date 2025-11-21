@@ -6,26 +6,28 @@ The following n lines are the data lines, each line has a number.
 The program reads the file "lab1_file.txt", and calculate average number of all those data line.
 """
 
-
 def computer_average(filename):
-    # TODO: create a file object called "file_obj"
-    # TODO: the file object opens the file passed by the argument "filename"
-    # TODO: use open mode "r"
+    # create a file object called "file_obj" in read mode
+    file_obj = open(filename, "r")
 
-    # read file line, which is number of lines
+    # read first line, which is number of data lines
     first_line = file_obj.readline()
-    # TODO: convert the variable `first_line` into an integer called `nums_line`
+    nums_line = int(first_line.strip())
 
     # create a list to wrap all following numbers
     numbers = []
 
     for i in range(nums_line):
-        # TODO: read one line in each iteration, read as a float number
-        # TODO: append the float number into the list `numbers`
+        # read one line in each iteration, convert to float
+        line = file_obj.readline()
+        number = float(line.strip())
+        numbers.append(number)
 
-    # TODO: close the file object
+    # close the file object
+    file_obj.close()
 
-    # TODO: calculate the average of all numbers in the list, save the result to variable `avg`
+    # calculate the average
+    avg = sum(numbers) / len(numbers) if numbers else 0.0
     return avg
 
 
